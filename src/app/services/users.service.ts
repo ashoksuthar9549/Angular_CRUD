@@ -93,7 +93,7 @@ export class UsersService {
         
         return this.http.delete(`${this.apiUrl}/users/${id}`, {headers})
         .subscribe({
-            next: (resData) => {
+            next: () => {
                 this.users.update((users) => users.filter((user: { id: number }) => user.id !== id));
             },
             error: (error: Error) => {
@@ -109,7 +109,7 @@ export class UsersService {
         
         return this.http.put(`${this.apiUrl}/users/${user.id}`, {...user}, {headers})
         .subscribe({
-            next: (resData) => {
+            next: () => {
                 this.users.update((users) => users.map((u: any) => u.id === user.id ? {...u, ...user} : u));
             },
             error: (error: Error) => {
@@ -126,7 +126,7 @@ export class UsersService {
         
         return this.http.patch(`${this.apiUrl}/users/${id}/toggle`, {isActive: status}, {headers})
         .subscribe({
-            next: (resData) => {
+            next: () => {
                 this.users.update((users) => users.map((u: any) => u.id === id ? {...u, isActive: !status} : u));
             },
             error: (error: Error) => {
