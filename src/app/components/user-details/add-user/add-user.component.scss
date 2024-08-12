@@ -1,0 +1,151 @@
+form{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+    div{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        margin: 10px 0;
+        width: 100%;
+        position: relative;
+        label{
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #000;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            -webkit-transition: all .5s ease;
+            -o-transition: all .5s ease;
+            transition: all .5s ease;
+            width: 100%;
+        }
+        input{
+            padding: 5px;
+            border: 1px solid #ccc;
+            outline: none;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+
+            &.ng-invalid.ng-touched{
+                border: 1px solid #d61212;
+                background-color: #ff00004d;
+            }
+            &:hover{
+                border: 1px solid #000;
+            }
+            &:focus{
+                border: 1px solid #000;
+            }
+            &[type="checkbox"]{
+                position: absolute;
+                left: 100px;
+                border: 1px solid #ccc;
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+                &:focus{
+                    border: 1px solid #000;
+                }
+            }
+        }
+
+        .switch {
+            position: absolute;
+            left: 100px;
+            display: inline-block;
+            width: 2.125rem;
+            height: 1.25rem;
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: #ccc;
+              -webkit-transition: 0.4s;
+              -o-transition: 0.4s;
+              transition: 0.4s;
+              border-radius: 2.125rem;
+              &::before {
+                  position: absolute;
+                  content: "";
+                  height: 0.875rem;
+                  width: 0.875rem;
+                  left: 0.1875rem;
+                  bottom: 0.1875rem;
+                  background-color: #ffffff;
+                  -webkit-transition: 0.4s;
+                  -o-transition: 0.4s;
+                  transition: 0.4s;
+                  border-radius: 50%;
+              }
+            }
+            input:checked + .slider {
+              background-color: #2196F3;
+            }
+            
+            input:checked + .slider::before {
+                -webkit-transform: translateX(0.875rem);
+                    -ms-transform: translateX(0.875rem);
+                        transform: translateX(0.875rem);
+            }
+        }  
+
+        .error{
+            color: #d61212;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    }
+
+    button{
+        padding: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+        background-color: #098f12;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        -webkit-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+        cursor: pointer;
+        &:focus{
+            border: 1px solid #000;
+        }
+        &:hover{
+            background: #000;
+            color: #fff;
+        }
+        &:disabled{
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}

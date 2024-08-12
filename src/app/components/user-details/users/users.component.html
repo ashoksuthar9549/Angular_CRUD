@@ -1,0 +1,57 @@
+<app-search-user (searchQuery)="searchFilter($event)"/>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th (click)="onSortChange('username')" [class.asc]="sortField() === 'username' && sortOrder() === 'asc'" [class.desc]="sortField() === 'username' && sortOrder() === 'desc'">Name</th>
+            <th (click)="onSortChange('email')" [class.asc]="sortField() === 'email' && sortOrder() === 'asc'" [class.desc]="sortField() === 'email' && sortOrder() === 'desc' ">Email</th>
+            <th (click)="onSortChange('phoneNumber')" [class.asc]="sortField() === 'phoneNumber' && sortOrder() === 'asc'" [class.desc]="sortField() === 'phoneNumber' && sortOrder() === 'desc' ">Phone</th>
+            <th (click)="onSortChange('isActive')" [class.asc]="sortField() === 'isActive' && sortOrder() === 'asc'" [class.desc]="sortField() === 'isActive' && sortOrder() === 'desc'">Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="isFetching">
+            <td colspan="6">Loading...</td>
+        </tr>
+
+        <tr *ngIf="users().length === 0 && !isFetching" class="no-data">
+            <td colspan="6">No users found</td>
+        </tr>
+
+        <tr *ngFor="let user of users(); let i = index">
+            <td>{{ (currentPage() - 1) * limit() + i + 1 }}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>
+                <!-- <input type="checkbox" [checked]="user.isActive" (click)="changeStatus(user)"> -->
+                <label class="switch">
+                    <input type="checkbox" [checked]="user.isActive" (change)="changeStatus(user)"/>
+                    <span class="slider round"></span>
+                </label>
+            </td>
+            <td>
+                <button class="edit-btn" (click)="editUserData(user)">Edit</button>
+                <button class="delete-btn" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot class="pagination" *ngIf="totalPages() >= 1">
+        <tr>
+            <td colspan="6">
+                <button (click)="onPageChange(currentPage() - 1)" [disabled]="currentPage() === 1">Previous</button>
+                <span>Page {{ currentPage() }} of {{ totalPages() }}</span>
+                <button (click)="onPageChange(currentPage() + 1)" [disabled]="currentPage() === totalPages()">Next</button>
+                
+                <select (change)="onLimitChange($event)">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </td>
+        </tr>
+    </tfoot>
+</table>

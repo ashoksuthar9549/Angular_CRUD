@@ -1,0 +1,40 @@
+aside{
+    z-index: 3;
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    background: #2f323a;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    ul{
+        list-style: none;
+        padding: 0;
+        li{
+            width: 100%;
+            a{
+                width: 100%;
+                display: block;
+                padding: 10px 30px;
+                color: #fff;
+                font-size: 16px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                text-decoration: none;
+                -webkit-transition: all .5s ease;
+                -o-transition: all .5s ease;
+                transition: all .5s ease;
+                cursor: pointer;
+                &:hover{
+                    background: #3e3f46;
+                }
+            }
+        }
+    }
+}

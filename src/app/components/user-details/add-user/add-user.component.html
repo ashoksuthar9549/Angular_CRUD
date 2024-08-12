@@ -1,0 +1,41 @@
+<form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" #username placeholder="Enter username">
+      <p class="error" *ngIf="addUserForm.get('username')?.invalid && addUserForm.get('username')?.touched">
+        Username is required
+      </p>
+    </div>
+    
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter email">
+      <p class="error" *ngIf="addUserForm.get('email')?.invalid && addUserForm.get('email')?.touched">
+        Enter a valid email
+      </p>
+    </div>
+    
+    <div>
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" formControlName="phoneNumber" type="text" placeholder="Enter phone number">
+      <p class="error" *ngIf="addUserForm.get('phoneNumber')?.invalid && addUserForm.get('phoneNumber')?.touched">
+        Phone number is required
+      </p>
+    </div>
+    
+    <div>
+      <label for="isActive">Active</label>
+      <!-- <input id="isActive" formControlName="isActive" type="checkbox"> -->
+      <label class="switch">
+        <input type="checkbox" formControlName="isActive" id="isActive"/>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div>
+      <p *ngIf="errorMessage()">{{errorMessage()}}</p>
+    </div>
+    
+    <button type="submit" [disabled]="addUserForm.invalid">{{isEdit ? 'Update' : 'Add'}}</button>
+  </form>
+  

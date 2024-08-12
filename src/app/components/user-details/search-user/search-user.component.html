@@ -1,0 +1,11 @@
+<div class="searchFilter">
+    <input type="text"  id="username" placeholder="search by username" #username>
+    <input type="text" id="email" placeholder="search by email" #email>
+    <input type="text" id="phoneNumber" placeholder="search by phone number" #phoneNumber>
+    <select name="active" id="active" #active>
+        <option value="">Select Status</option>
+        <option value="true">Active</option>
+        <option value="false">Inactive</option>
+    </select>
+    <button (click)="searchUser(username.value, email.value, phoneNumber.value, active.value)">Search</button>
+</div>
